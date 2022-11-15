@@ -72,7 +72,7 @@ def main():
         i=0
         #my_bar = st.progress(100) # To track progress of Extracted tweets
         #for tweet in api.search_tweets(q=Topic,count=10, lang="en"):
-        for tweet in tweepy.Cursor(api.search_tweets, q=Topic,count=100, lang="en",exclude='retweets').items():
+        for tweet in tweepy.Cursor(api.search_tweets, q=Topic,count=500,exclude='retweets').items():
             #time.sleep(0.1)
             #my_bar.progress(i)
             df.loc[i,"Date"] = tweet.created_at
@@ -130,7 +130,7 @@ def main():
         
         # Call the function to extract the data. pass the topic and filename you want the data to be stored in.
         with st.spinner("Please wait, Tweets are being extracted"):
-            get_tweets(Topic , Count=200)
+            get_tweets(Topic , Count=500)
         st.success('Tweets have been Extracted !!!!')    
            
     
@@ -151,7 +151,7 @@ def main():
         if st.button("See the Extracted Data"):
             #st.markdown(html_temp, unsafe_allow_html=True)
             st.success("Below is the Extracted Data :")
-            st.write(df.head(50))
+            st.write(df.head(500))
         
         
         # get the countPlot
